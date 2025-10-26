@@ -4,6 +4,14 @@ FROM jenkins/jenkins:lts
 #switch to root user to install docker
  USER root
 
+# Add Google Cloud SDK apt key (use modern signed-by keyring approach)
+# Install gnupg so we can dearmor the key and save it into /usr/share/keyrings,
+# then add the cloud-sdk apt source referencing that keyring to avoid signature errors.
+RUN apt-get update && \
+    apt-get install -y curl apt-transport-https ca-certificates gnupg lsb-release && \
+    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" > /etc/apt/sources.list.d/google-cloud-sdk.list
+
  # Install Docker CLI
 RUN apt-get update && \
     apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release && \
