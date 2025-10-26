@@ -16,7 +16,7 @@ setup(
         "flask"
     ],
     author="Sudip Maji",
-    author_email="sudipmaji366@gmail.com",
+    author_email="xxx",
     description="Hotel Reservation Prediction MLOps Project on GCP",
     keywords="mlops,hotel,reservation,prediction,gcp",
     python_requires=">=3.9",
