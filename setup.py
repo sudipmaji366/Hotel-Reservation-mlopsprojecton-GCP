@@ -1,13 +1,23 @@
 from setuptools import setup, find_packages
 
-with open('requirements.txt') as f:
-    requirements = f.read().splitlines()
-
 setup(
-
-    name="MLOPS-1",
+    name="hotel_reservation",
     version="0.1.0",
-    author="Sudip",
     packages=find_packages(),
-    install_requires=requirements,
+    install_requires=[
+        "pandas",
+        "numpy",
+        "google-cloud-storage",
+        "scikit-learn",
+        "pyyaml",
+        "imbalanced-learn",
+        "lightgbm",
+        "mlflow",
+        "flask"
+    ],
+    author="Sudip Maji",
+    author_email="sudipmaji366@gmail.com",
+    description="Hotel Reservation Prediction MLOps Project on GCP",
+    keywords="mlops,hotel,reservation,prediction,gcp",
+    python_requires=">=3.9",
 )
